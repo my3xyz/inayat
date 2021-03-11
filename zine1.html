@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="turn.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<style type="text/css">
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-50deg, #7F0000 50%, #EAAA01 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+body{
+  overflow: hidden;
+	background:#ccc;
+}
+#magazine{
+	width:1000px;
+	height:600px;
+  margin-top: 20px;
+  position: absolute;
+top: 58%;
+left: 17%;
+}
+#magazine .turn-page{
+	background-color:#ccc;
+	background-size:100% 100%;
+}
+.butt {
+  position: absolute;
+  top: 88%;
+  left: 30%;
+}
+.buttt {
+  position: absolute;
+  top: 88%;
+  left: 60%;
+}
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+<div id="magazine">
+	<div style="background-image:url(zine1.jpeg);"></div>
+	<div style="background-image:url(zine11.jpeg);"></div>
+	<div style="background-image:url(zine12.jpeg);"></div>
+	<div style="background-image:url(zine13.jpeg);"></div>
+	<div style="background-image:url(zine14.jpeg);"></div>
+	<div style="background-image:url(zine15.jpeg);"></div>
+  <div style="background-image:url(zine16.jpeg);"></div>
+  <div style="background-image:url(zine17.jpeg);"></div>
+</div> <br>
+
+<a href="zineee.html"><button type="button" class="btn btn-dark btn-lg butt">Home</button></a>  
+<button type="button" class="btn btn-dark btn-lg buttt">Next Zine</button>
+
+
+
+<script type="text/javascript">
+
+	$(window).ready(function() {
+		$('#magazine').turn({
+							display: 'double',
+							acceleration: true,
+							gradients: !$.isTouch,
+							elevation:50,
+							when: {
+								turned: function(e, page) {
+									/*console.log('Current view: ', $(this).turn('view'));*/
+								}
+							}
+						});
+	});
+
+
+	$(window).bind('keydown', function(e){
+		if (e.keyCode==37)
+			$('#magazine').turn('previous');
+		else if (e.keyCode==39)
+			$('#magazine').turn('next');
+
+	});
+
+</script>
+
+</body>
+</html>
