@@ -31,7 +31,7 @@ var has3d,
 
 	isTouch = !(window.screenX != 0) && ('ontouchstart' in window || 'onmsgesturechange' in window),
 
-	events = (isTouch) ? {start: 'touchstart', move: 'touchmove', end: 'touchend'}
+	events = (isTouch=false) ? {start: 'touchstart', move: 'touchmove', end: 'touchend'}
 			: {start: 'mousedown', move: 'mousemove', end: 'mouseup'},
 
 	// Contansts used for each corner
